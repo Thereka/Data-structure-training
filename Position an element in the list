@@ -1,0 +1,44 @@
+import java.util.*;
+class Node{
+    int num;
+    Node next;
+}
+class Main{
+    public static void insert(Node head,int pos){
+        int c=0;
+        Node p=head;
+        while(c<(pos-1) && p.next!=null){
+            c++;
+            p=p.next;
+        }
+        if((pos-1)==c){
+            Node ob=new Node();
+            Scanner sc = new Scanner(System.in);
+            ob.num=sc.nextInt();
+            ob.next=p.next;
+            p.next=ob;
+        }
+        else{
+            System.out.println("Position Exceeds!");
+        }
+    }
+    public static void display(Node head){
+        Node t=head.next;
+        while(t!=null){
+            System.out.println(t.num);
+            t=t.next;
+        }
+        
+
+    }
+
+    public static void main(String args[]){
+        Node head=new Node();
+        head.next=null;
+        insert(head,1);
+        insert(head,2);
+        insert(head,3);
+        insert(head,1);
+        display(head);
+   }
+}
