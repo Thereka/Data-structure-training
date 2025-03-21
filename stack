@@ -1,0 +1,83 @@
+import java.util.*;
+class Node 
+{
+    int n;
+    Node nxt;
+}
+class Main{
+   public static void push(Node head)
+    {
+        Scanner sc=new Scanner(System.in);
+        Node ob=new Node();
+        ob.n=sc.nextInt();
+        ob.nxt=head.nxt;
+        head.nxt=ob;
+    }
+    public static void pop(Node head)
+    {
+        if(head.nxt!=null)
+        head.nxt=head.nxt.nxt;
+    }
+   public static void peek(Node head)
+    {
+        if(head.nxt!=null)
+        System.out.println(head.nxt.n);
+    }
+   public static void size(Node head)
+    {
+        int c=0;
+        Node t=head.nxt;
+        while(t!=null)
+        {
+            c++;
+            t=t.nxt;
+        }
+        System.out.println("Size="+c);
+    }
+    public static void isEmpty(Node head)
+    {
+        if(head.nxt==null)
+        System.out.println("Empty");
+        else
+           System.out.println("Not Empty");
+    }
+    public static void isFull(Node head)
+    {
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int l=0;
+        Node t=head.nxt;
+        while(t!=null)
+        {
+            l++;
+            t=t.nxt;
+        }
+        if(l<size)
+        {
+            System.out.println("Not full");
+        }
+    }
+    public static void display(Node head)
+    {
+        Node t=head.nxt;
+        while(t!=null)
+        {
+        System.out.print(t.n+" ");
+        t=t.nxt;
+        }
+    }
+    public static void main (String[] args) 
+    {
+        Node head=new Node();
+        head.nxt=null;
+        for(int i=0;i<5;i++)
+        push(head);
+        display(head);
+        pop(head);
+        display(head);
+        size(head);
+        isEmpty(head);
+        isFull(head);
+        peek(head);
+    }
+}
