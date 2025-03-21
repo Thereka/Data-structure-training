@@ -1,0 +1,74 @@
+import java.util.*;
+class Node{
+  int data;
+  Node next;
+}
+class Main 
+{
+    public static void insert(Node head)
+    {
+        Scanner sc=new Scanner(System.in);
+        int pos=sc.nextInt();
+        int c=0;
+        Node p=head;
+        while(c<(pos-1) && p.next!=null)
+        {
+            p=p.next;
+            c++;
+        }
+        if(c==(pos-1))
+        {
+            Node ob=new Node();
+            ob.data=sc.nextInt();
+            ob.next=p.next;
+            p.next=ob;
+        }
+        else{
+            System.out.println("Pos excxeeds length");
+        }
+    }
+    public static void display(Node head)
+    {
+        Node t=head.next;
+        while(t!=null)
+        {
+            System.out.print(t.data+" ");
+            t=t.next;
+        }
+    }
+    public static void delete(Node head)
+    {
+        Scanner sc=new Scanner(System.in);
+        int pos=sc.nextInt();
+        int c=0;
+        Node p=head;
+        while(c<(pos-1) && p.next!=null)
+        {
+            c++;
+            p=p.next;
+        }
+        if(c==(pos-1))
+        {
+            p.next=p.next.next;
+        }
+        else
+        {
+            System.out.println("Pos Exceeds Length");
+        }
+    }
+    public static void main (String[] args) 
+    {
+        Node head=new Node();
+        head.next=null;
+        Scanner sc=new  Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++)
+        {
+            insert(head);
+        }
+        display(head);
+        System.out.println();
+        delete(head);
+        display(head);
+    }
+}
