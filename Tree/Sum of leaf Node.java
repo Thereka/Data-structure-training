@@ -1,0 +1,63 @@
+import java.util.*;
+
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinaryTree {
+    Node root = null;
+
+    void build() {
+        Scanner sc = new Scanner(System.in);
+        int data = sc.nextInt();
+        if (data == -1) return;
+
+        root = new Node(data);
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+
+        while (!q.isEmpty()) {
+            Node currentNode = q.poll();
+
+            int leftData = sc.nextInt();
+            if (leftData != -1) {
+                currentNode.left = new Node(leftData);
+                q.offer(currentNode.left);
+            }
+
+            int rightData = sc.nextInt();
+            if (rightData != -1) {
+                currentNode.right = new Node(rightData);
+                q.offer(currentNode.right);
+            }
+        }
+        sc.close();
+    }
+
+    int sumOfLeafNodes(Node root) {
+        if (root == null) 
+          return 0;
+        if (root.left == null && root.right == null) 
+          return root.data; 
+        return sumOfLeafNodes(root.left) + sumOfLeafNodes(root.right);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BinaryTree tree = new BinaryTree();
+        tree.build();
+
+        System.out.println("Sum of Leaf Nodes: " + tree.sumOfLeafNodes(tree.root));
+
+        sc.close();
+    }
+}
